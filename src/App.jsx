@@ -10,12 +10,13 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import { MyLayout } from "./components/customAppBar";
 import { authProvider } from "./api/authProvider";
 import { dataProvider } from "./api/dataProvider";
+import { UserEdit } from './components/editUsers';
 
 
 const App = () => (
   <Admin authProvider={authProvider} layout={MyLayout} dataProvider={dataProvider}>
-    <Resource name="dashboard" list={Dashboard} icon={DashboardIcon}/>
-    <Resource name="users" list={UserList} recordRepresentation="name" icon={UserIcon} />
+    <Resource name="dashboard" list={Dashboard} icon={DashboardIcon} />
+    <Resource name="users" list={UserList} edit={UserEdit} recordRepresentation="name" icon={UserIcon} />
     {/* <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon} /> */}
   </Admin>
 );

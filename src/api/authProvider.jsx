@@ -4,23 +4,28 @@ export const authProvider = {
   // called when the user attempts to log in
   login: async ({ username, password }) => {
     let loginData = {
-      email: username,
+      userName: username,
       password
     }
     const request = new Request(`${baseUrl}/auth/login`, {
       method: 'POST',
       body: JSON.stringify(loginData),
-      headers: new Headers({'Content-Type': 'application/json'}),
+      headers: new Headers({ 'Content-Type': 'application/json' }),
+      credentials: 'include'
     });
     return fetch(request).then(response => {
-        if (response.status < 200 || response.status >= 300) {
-          throw new Error(response.statusText);
+      if (response.status < 200 || response.status >= 300) {
+        throw new Error(response.statusText);
+      }
+      return response.json();
+    })
+      .then(({ data }) => {
+        if (data.roles.includes('admin')) {
+          sessionStorage.setItem('username', data.userName);
+          sessionStorage.setItem('userId', data._id);
+        } else {
+          return true
         }
-        return response.json();
-      })
-      .then(({_id,email}) => {
-        sessionStorage.setItem('username', email);
-        sessionStorage.setItem('userId', _id );
       });
   },
   // called when the user clicks on the logout button
