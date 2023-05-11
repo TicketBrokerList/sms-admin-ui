@@ -10,7 +10,7 @@ To install the app, clone the repository and run the following command:
 To start the app in development mode, run the following command:
 `npm run dev`
 
-This will start the app at http://localhost:3000.
+This will start the app at http://localhost:5173
 
 To build the app for production, run the following command:
 `npm run build`
@@ -21,8 +21,6 @@ The app relies on the following dependencies:
 `React`: A JavaScript library for building user interfaces.
 `React Admin`: A frontend framework for building admin applications on top of REST/GraphQL APIs.
 `React DOM`: Provides DOM-specific methods that can be used at the top level of your app.
-`ra-data-json-server`: A data provider for React Admin that communicates with a JSON server.
-`ra-data-simple-rest`: A data provider for React Admin that communicates with a REST API.
 
 ## Dev Dependencies
 The app also has the following dev dependencies:
