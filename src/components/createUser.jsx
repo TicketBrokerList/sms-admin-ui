@@ -1,33 +1,31 @@
 import {
-    Edit,
+    Create,
     BooleanInput,
     SelectInput,
     CheckboxGroupInput,
     SimpleForm,
     TextInput,
-    TextField,
-
+    PasswordInput
 } from 'react-admin';
 
-export const EditUser = () => (
-    <Edit>
+export const CreateUser = () => (
+    <Create redirect="list">
         <SimpleForm>
-            <TextInput source="id" disabled />
-            <TextInput source="email" disabled />
+            <TextInput source="email" />
             <TextInput source="firstName" />
             <TextInput source="lastName" />
             <TextInput source="userName" />
+            <PasswordInput source="password" />
             <SelectInput source="subscriptionTier" choices={[
                 { id: 'Basic', name: 'Basic' },
                 { id: 'Premium', name: 'Premium' },
                 { id: 'Enterpise', name: 'Enterpise' },
             ]} />
             <BooleanInput source="is_active" />
-            <BooleanInput source="is_verified" disabled />
             <CheckboxGroupInput source="roles" choices={[
                 { id: 'user', name: 'user' },
                 { id: 'admin', name: 'admin' },
             ]} />
         </SimpleForm>
-    </Edit>
+    </Create>
 );
